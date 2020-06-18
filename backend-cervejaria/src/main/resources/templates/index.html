@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="htpp://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+      <meta charset="UTF-8">
+      <title>Cervejaria App</title>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link rel="stylesheet" href="style/styleCss.css"/>
+</head>
+<body>
+	<header>
+	  <nav>
+	    <div class="nav-wrapper">
+	      <a href="#" class="brand-logo"><h5>Lista de Cervejaria</h5></a>
+	      <ul id="nav-mobile" class="right hide-on-med-and-down">
+	        <li><a href="/cadastrarCerveja" class="waves-effect waves-light btn"><i class="material-icons left">add_circle</i>Cadastrar Cervejaria</a></li>
+	      </ul>
+	    </div>
+	  </nav>
+	</header>
+    
+    <table class="container">
+        <thead>
+           <tr>
+              <th>Código</th>
+              <th>Nome</th>
+              <th>Local</th>
+              <th>Telefone</th> 
+              <th>Ações</th>          
+           </tr>
+        </thead>
+     	<tbody>         
+	       <tr th:each="cervejaria : ${cervejarias}">
+	           <td><span th:text="${cervejaria.codigo}"></span></td> 
+	           <td><span th:text="${cervejaria.nome}"></span></td> 
+	           <td><span th:text="${cervejaria.local}"></span></td> 
+	           <td><span th:text="${cervejaria.telefone}"></span></td>   
+	           <!-- <td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('CC#editarCervejarias').arg(0, cervejaria.id)).build()}"><i class="material-icons left">edit</i></a></td>-->
+	           <td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('CC#deletarCervejarias').arg(0, cervejaria.id)).build()}"><i class="material-icons left">delete</i></a></td>
+	       </tr>
+      	</tbody>
+    </table>
+	  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+
+</html>
